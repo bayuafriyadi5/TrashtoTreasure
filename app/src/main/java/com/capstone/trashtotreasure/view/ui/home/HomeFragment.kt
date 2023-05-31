@@ -50,6 +50,9 @@ class HomeFragment : Fragment() {
         auth = Firebase.auth
         val firebaseUser = auth.currentUser
 
+        binding.loadingShimmer.visibility = View.VISIBLE
+        binding.rvArtikel.visibility = View.GONE
+
         binding.tvName.text = "Hi! "+firebaseUser?.displayName.toString()
         Glide.with(requireContext())
             .load(firebaseUser?.photoUrl)
@@ -63,7 +66,6 @@ class HomeFragment : Fragment() {
             return
         }
 
-        binding.loadingShimmer.visibility = View.VISIBLE
         newsAdapter = ArticleAdapter { news ->
             if (news.isBookmarked){
                 homeViewModel.deleteNews(news)
@@ -78,13 +80,14 @@ class HomeFragment : Fragment() {
                 when (result) {
                     is Result.Loading -> {
                         binding.loadingShimmer.visibility = View.VISIBLE
+                        binding.rvArtikel.visibility = View.GONE
                     }
                     is Result.Success -> {
-
                         val newsData = result.data
                         newsAdapter.setData(newsData)
                         Log.d("ArticleAdapter", "News list size: ${newsData.size}")
                         binding.loadingShimmer.visibility = View.INVISIBLE
+                        binding.rvArtikel.visibility = View.VISIBLE
                     }
                     is Result.Error -> {
                         binding.loadingShimmer.visibility = View.INVISIBLE

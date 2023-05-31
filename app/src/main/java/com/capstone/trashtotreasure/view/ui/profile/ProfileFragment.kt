@@ -81,7 +81,7 @@ class ProfileFragment : Fragment() {
     private fun signOut() {
         auth.signOut()
         startActivity(Intent(requireContext(), LoginActivity::class.java))
-       requireActivity().finish()
+        requireActivity().finish()
     }
 
     override fun onDestroyView() {

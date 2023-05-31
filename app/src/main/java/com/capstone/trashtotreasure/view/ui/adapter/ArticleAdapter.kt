@@ -68,6 +68,7 @@ class ArticleAdapter(private val onBookmarkClick: (ArticleEntity) -> Unit) : Lis
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setData(data: List<ArticleEntity>) {
         submitList(data)
         notifyDataSetChanged()

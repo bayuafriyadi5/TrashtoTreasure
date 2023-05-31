@@ -14,15 +14,15 @@
     <string name="masuk">Masuk</string>
 
 
-    <string name="title_menu_1">Kurikulum Standar Industri Global</string>
-    <string name="title_menu_2">Belajar Fleksibel Sesuai Jadwal Anda</string>
-    <string name="title_menu_3">Code Review dari Developer Expert</string>
-    <string name="title_menu_4">Alumni Terpercaya di Berbagai Perusahaan</string>
-    <string name="desc_menu_1">Kurikulum dikembangkan bersama perusahaan dan pemilik teknologi dunia sesuai kebutuhan industri terkini.</string>
-    <string name="desc_menu_2">Belajar kapan pun, di mana pun, secara mandiri. Bebas memilih kelas sesuai minat belajar. Akses seumur hidup ke kelas dan forum diskusi setelah lulus.</string>
-    <string name="desc_menu_3">Validasi skill Anda melalui 1-on-1 Professional Code Review yang diberikan langsung oleh Developer Expert.</string>
-    <string name="desc_menu_4">Sertifikat yang membuktikan pengetahuan fundamental beserta keterampilan nyata yang diinginkan perusahaan global.</string>
-    <string name="learn_now">Belajar Sekarang</string>
+    <string name="title_menu_1">Foto sampah</string>
+    <string name="title_menu_2">Deteksi sampah</string>
+    <string name="title_menu_3">Rekomendasi produk daur ulang</string>
+    <string name="title_menu_4">Mulai Daur ulang</string>
+    <string name="desc_menu_1">Siapkan sampah yang ingin di daur ulang seperti boto plastik, kemudian foto sampah tersebut melalui aplikasi</string>
+    <string name="desc_menu_2">Sampah yang di foto akan di deteksi menggunakan machine learning untuk mengidentifikasi sampah</string>
+    <string name="desc_menu_3">Sampah yang telah di scan akan menampilkan data dan rekomendasi produk hasil daur ulang</string>
+    <string name="desc_menu_4">Daftarkan akunmu dan mulailah daur ulang sekarang</string>
+    <string name="learn_now">Mulai Sekarang</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>

@@ -52,6 +52,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.signInButton.setOnClickListener {
+            binding.loading.visibility = View.VISIBLE
             signIn()
         }
     }
