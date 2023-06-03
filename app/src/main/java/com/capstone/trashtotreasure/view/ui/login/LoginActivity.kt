@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import com.capstone.trashtotreasure.R
 import com.capstone.trashtotreasure.databinding.ActivityLoginBinding
@@ -58,8 +59,11 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun signIn() {
-        val signInIntent = googleSignInClient.signInIntent
-        resultLauncher.launch(signInIntent)
+        auth.signOut()
+        googleSignInClient.signOut().addOnCompleteListener(this) {
+            val signInIntent = googleSignInClient.signInIntent
+            resultLauncher.launch(signInIntent)
+        }
     }
     private var resultLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
@@ -96,6 +100,7 @@ class LoginActivity : AppCompatActivity() {
     private fun updateUI(currentUser: FirebaseUser?) {
         if (currentUser != null){
             startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             finish()
         }
     }

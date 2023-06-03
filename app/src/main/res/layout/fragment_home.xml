@@ -9,7 +9,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/ivProfile"
@@ -67,6 +67,16 @@
             app:layout_constraintStart_toStartOf="@+id/card_img"
             app:layout_constraintTop_toBottomOf="@+id/card_img" />
 
+
+<!--        <ProgressBar-->
+<!--            android:id="@+id/loading"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="32dp"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/tvArtikel" />-->
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvArtikel"
             android:layout_width="match_parent"
@@ -74,9 +84,12 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="24dp"
+            android:layout_marginBottom="62dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvArtikel" />
+            app:layout_constraintTop_toBottomOf="@+id/tvArtikel"
+            app:layout_constraintVertical_bias="0.0" />
 
 
         <com.facebook.shimmer.ShimmerFrameLayout
@@ -85,6 +98,7 @@
             android:layout_height="match_parent"
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
+            android:elevation="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -99,6 +113,8 @@
                 <include layout="@layout/item_artikel_shimmer" />
                 <include layout="@layout/item_artikel_shimmer" />
                 <include layout="@layout/item_artikel_shimmer" />
+
+
 
             </LinearLayout>
 

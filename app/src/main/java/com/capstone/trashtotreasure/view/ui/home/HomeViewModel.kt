@@ -1,26 +1,31 @@
 package com.capstone.trashtotreasure.view.ui.home
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.capstone.trashtotreasure.model.data.local.entitiy.ArticleEntity
+import androidx.lifecycle.viewModelScope
+import androidx.paging.ExperimentalPagingApi
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
+import com.capstone.trashtotreasure.model.data.local.entitiy.NewsEntity
 import com.capstone.trashtotreasure.model.data.repository.ArticleRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
+@ExperimentalPagingApi
 class HomeViewModel @Inject constructor(
     private val articleRepository: ArticleRepository
 ): ViewModel() {
-    fun getAllArticle()= articleRepository.getArticle()
+    fun getAllArticle(): LiveData<PagingData<NewsEntity>> =
+        articleRepository.getArticle()
 
     fun getBookmarkedNews() = articleRepository.getBookmarkedNews()
 
-    fun saveNews(news: ArticleEntity) {
+    fun saveNews(news: NewsEntity) {
         articleRepository.setBookmarkedNews(news, true)
     }
 
-    fun deleteNews(news: ArticleEntity) {
+    fun deleteNews(news: NewsEntity) {
         articleRepository.setBookmarkedNews(news, false)
     }
 }

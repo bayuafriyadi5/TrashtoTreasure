@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import com.capstone.trashtotreasure.model.data.local.room.NewsDao
 import com.capstone.trashtotreasure.model.data.local.room.NewsDatabase
+import com.capstone.trashtotreasure.model.data.local.room.RemoteKeysDao
 import com.capstone.trashtotreasure.utils.AppExecutors
 import dagger.Module
 import dagger.Provides
@@ -22,9 +23,9 @@ object DatabaseModule {
     @Provides
     fun provideAppExecutors() = AppExecutors()
 
-//    @Provides
-//    fun provideRemoteKeysDao(newsDatabase: NewsDatabase): RemoteKeysDao =
-//        storyDatabase.remoteKeysDao()
+    @Provides
+    fun provideRemoteKeysDao(newsDatabase: NewsDatabase): RemoteKeysDao =
+        newsDatabase.remoteKeysDao()
 
     @Provides
     @Singleton

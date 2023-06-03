@@ -5,15 +5,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.capstone.trashtotreasure.databinding.FragmentProfileBinding
-import com.capstone.trashtotreasure.view.MainActivity
-import com.capstone.trashtotreasure.view.ui.home.HomeViewModel
 import com.capstone.trashtotreasure.view.ui.login.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -34,9 +30,8 @@ class ProfileFragment : Fragment() {
     ): View {
 
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
-        val root: View = binding.root
 
-        return root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -80,7 +75,9 @@ class ProfileFragment : Fragment() {
 
     private fun signOut() {
         auth.signOut()
-        startActivity(Intent(requireContext(), LoginActivity::class.java))
+        val intent = Intent(requireContext(), LoginActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
         requireActivity().finish()
     }
 

@@ -16,7 +16,7 @@ import com.google.firebase.ktx.Firebase
 
 class SplashActivity : AppCompatActivity() {
 
-    private val SPLASH_TIME_OUT = 4000 //3 seconds
+    private val SPLASH_TIME_OUT = 3000 //3 seconds
     private lateinit var auth: FirebaseAuth
 
     private val binding: ActivitySplashBinding by lazy {
@@ -30,9 +30,11 @@ class SplashActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         supportActionBar?.hide()
-        Handler().postDelayed(Runnable {
+
+        val view = window.decorView
+        view.postDelayed({
             val intent = Intent(this, GuideActivity::class.java)
-//            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
             finish()
         }, SPLASH_TIME_OUT.toLong())

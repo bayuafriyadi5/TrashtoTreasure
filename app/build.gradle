@@ -43,7 +43,7 @@ android {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.core:core-ktx:1.10.1'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
@@ -58,6 +58,9 @@ dependencies {
     implementation 'androidx.datastore:datastore-core:1.0.0'
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.6.1"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.6.1"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.1"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
 
     //retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
@@ -77,7 +80,7 @@ dependencies {
 
     //room
     implementation "androidx.room:room-ktx:2.5.1"
-    implementation "androidx.room:room-runtime:2.5.1-alpha02"
+    implementation "androidx.room:room-runtime:2.6.0-alpha01"
     kapt "androidx.room:room-compiler:2.5.1"
 
     //dagger hilt
@@ -91,6 +94,10 @@ dependencies {
     implementation 'org.ocpsoft.prettytime:prettytime:4.0.4.Final'
 
     //firebase
-    implementation 'com.google.firebase:firebase-auth-ktx:21.0.3'
-    implementation 'com.google.android.gms:play-services-auth:20.1.0'
+    implementation 'com.google.firebase:firebase-auth-ktx:22.0.0'
+    implementation 'com.google.android.gms:play-services-auth:20.5.0'
+
+    //paging
+    implementation "androidx.paging:paging-runtime-ktx:3.1.1"
+    implementation 'androidx.room:room-paging:2.6.0-alpha01'
 }

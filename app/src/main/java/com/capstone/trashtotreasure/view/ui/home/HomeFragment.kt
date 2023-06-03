@@ -1,23 +1,20 @@
 package com.capstone.trashtotreasure.view.ui.home
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.MutableLiveData
+import androidx.paging.ExperimentalPagingApi
+import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.capstone.trashtotreasure.R
-import com.capstone.trashtotreasure.model.data.Result
 import com.capstone.trashtotreasure.databinding.FragmentHomeBinding
-import com.capstone.trashtotreasure.model.data.local.entitiy.ArticleEntity
 import com.capstone.trashtotreasure.view.ui.adapter.ArticleAdapter
+import com.capstone.trashtotreasure.view.ui.adapter.LoadingStateAdapter
 import com.capstone.trashtotreasure.view.ui.login.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -25,6 +22,7 @@ import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
+@ExperimentalPagingApi
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
@@ -32,7 +30,8 @@ class HomeFragment : Fragment() {
     private val homeViewModel: HomeViewModel by viewModels()
     private lateinit var auth: FirebaseAuth
     private lateinit var newsAdapter: ArticleAdapter
-
+    private lateinit var recyclerView: RecyclerView
+    private var lastVisiblePosition: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,75 +39,89 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-        return root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        auth = Firebase.auth
-        val firebaseUser = auth.currentUser
+        setupViews()
+        setupUser()
+        setupNewsAdapter()
+        getArticle()
 
+    }
+
+    override fun onResume() {
+        super.onResume()
         binding.loadingShimmer.visibility = View.VISIBLE
-        binding.rvArtikel.visibility = View.GONE
+        if (::recyclerView.isInitialized && lastVisiblePosition != RecyclerView.NO_POSITION) {
+            recyclerView.scrollToPosition(lastVisiblePosition)
+            binding.loadingShimmer.visibility = View.INVISIBLE
+        }
+    }
 
-        binding.tvName.text = "Hi! "+firebaseUser?.displayName.toString()
+//    override fun onResume() {
+//        super.onResume()
+//        binding.loadingShimmer.visibility = View.VISIBLE
+//    }
+
+    override fun onPause() {
+        super.onPause()
+        if (::recyclerView.isInitialized) {
+            lastVisiblePosition =
+                (recyclerView.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
+            binding.loadingShimmer.visibility = View.INVISIBLE
+        }else{
+            binding.loadingShimmer.visibility = View.VISIBLE
+        }
+    }
+
+    private fun setupViews() {
+        recyclerView = binding.rvArtikel
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+    }
+
+    private fun setupUser() {
+        auth = Firebase.auth
+        val currentUser = auth.currentUser
+
+        binding.tvName.text = "Hi! ${currentUser?.displayName}"
         Glide.with(requireContext())
-            .load(firebaseUser?.photoUrl)
+            .load(currentUser?.photoUrl)
             .circleCrop()
             .into(binding.ivProfile)
 
-        if (firebaseUser == null) {
-            // Not signed in, launch the Login activity
+        if (currentUser == null) {
             startActivity(Intent(requireContext(), LoginActivity::class.java))
             requireActivity().finish()
-            return
         }
+    }
 
+    private fun setupNewsAdapter() {
         newsAdapter = ArticleAdapter { news ->
-            if (news.isBookmarked){
+            if (news.isBookmarked) {
                 homeViewModel.deleteNews(news)
             } else {
                 homeViewModel.saveNews(news)
             }
         }
-
-
-        homeViewModel.getAllArticle().observe(viewLifecycleOwner) { result ->
-            if (result != null) {
-                when (result) {
-                    is Result.Loading -> {
-                        binding.loadingShimmer.visibility = View.VISIBLE
-                        binding.rvArtikel.visibility = View.GONE
-                    }
-                    is Result.Success -> {
-                        val newsData = result.data
-                        newsAdapter.setData(newsData)
-                        Log.d("ArticleAdapter", "News list size: ${newsData.size}")
-                        binding.loadingShimmer.visibility = View.INVISIBLE
-                        binding.rvArtikel.visibility = View.VISIBLE
-                    }
-                    is Result.Error -> {
-                        binding.loadingShimmer.visibility = View.INVISIBLE
-                        Toast.makeText(
-                            context,
-                            "Terjadi kesalahan" + result.error,
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                }
-            }
-        }
-
-        binding.rvArtikel.apply {
-            layoutManager = LinearLayoutManager(context)
-            setHasFixedSize(true)
-            adapter = newsAdapter
-        }
-
-
     }
+
+    private fun getArticle() {
+        homeViewModel.getAllArticle().observe(viewLifecycleOwner) { articleData ->
+            binding.rvArtikel.adapter = newsAdapter.withLoadStateFooter(
+                footer = LoadingStateAdapter {
+                    newsAdapter.retry()
+//                    binding.loadingShimmer.visibility = View.GONE
+                }
+            )
+            newsAdapter.submitData(lifecycle, articleData)
+
+//            binding.loadingShimmer.visibility = View.GONE
+        }
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
