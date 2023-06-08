@@ -9,10 +9,7 @@ import com.capstone.trashtotreasure.model.data.local.entitiy.NewsEntity
 interface NewsDao {
     @Query("SELECT * FROM news")
     fun getNews(): PagingSource<Int, NewsEntity>
-
-    @Query("SELECT * FROM news where bookmarked = 1")
-    fun getBookmarkedNews(): LiveData<List<NewsEntity>>
-
+    
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertNews(vararg news: NewsEntity)
 
@@ -22,8 +19,7 @@ interface NewsDao {
     @Query("DELETE FROM news")
     fun deleteAll()
 
-    @Query("SELECT EXISTS(SELECT * FROM news WHERE title = :title AND bookmarked = 1)")
-    fun isNewsBookmarked(title: String): Boolean
+
 
 
 }

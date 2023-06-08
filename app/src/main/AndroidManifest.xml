@@ -31,12 +31,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.ui.register.RegisterActivity"
-            android:exported="false" />
-        <activity
             android:name=".view.ui.login.LoginActivity"
             android:exported="false" />
 
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

@@ -11,7 +11,6 @@ import androidx.activity.result.contract.ActivityResultContracts
 import com.capstone.trashtotreasure.R
 import com.capstone.trashtotreasure.databinding.ActivityLoginBinding
 import com.capstone.trashtotreasure.view.MainActivity
-import com.capstone.trashtotreasure.view.ui.register.RegisterActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -47,10 +46,10 @@ class LoginActivity : AppCompatActivity() {
         auth = Firebase.auth
 
 
-        binding.loginButton.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
+//        binding.loginButton.setOnClickListener {
+//            val intent = Intent(this, MainActivity::class.java)
+//            startActivity(intent)
+//        }
 
         binding.signInButton.setOnClickListener {
             binding.loading.visibility = View.VISIBLE
@@ -109,8 +108,8 @@ class LoginActivity : AppCompatActivity() {
         private const val TAG = "LoginActivity"
     }
 
-    fun goToRegister(view: View) {
-        val intent = Intent(this, RegisterActivity::class.java)
-        startActivity(intent)
-    }
+//    fun goToRegister(view: View) {
+//        val intent = Intent(this, RegisterActivity::class.java)
+//        startActivity(intent)
+//    }
 }

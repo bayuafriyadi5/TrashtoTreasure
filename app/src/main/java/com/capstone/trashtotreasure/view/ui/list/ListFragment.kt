@@ -1,12 +1,11 @@
 package com.capstone.trashtotreasure.view.ui.list
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.capstone.trashtotreasure.R
 import com.capstone.trashtotreasure.databinding.FragmentListBinding
 
 class ListFragment : Fragment() {
@@ -33,6 +32,10 @@ class ListFragment : Fragment() {
             textView.text = it
         }
         return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
     }
 
     override fun onDestroyView() {

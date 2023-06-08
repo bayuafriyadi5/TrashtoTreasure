@@ -1,47 +1,37 @@
 <resources>
     <string name="app_name">Trash to Treasure</string>
     <string name="splash_logo">Splash Logo</string>
-    <string name="email">Silahkan masukan email</string>
-    <string name="password">Silahkan masukan password</string>
-    <string name="btn_login">Login</string>
-    <string name="password_tv">Password:</string>
-    <string name="email_tv">Email:</string>
-    <string name="belum_punya_akun">Belum punya akun?</string>
-    <string name="daftar">Daftar disini</string>
-    <string name="name_tv">Nama:</string>
-    <string name="name">Silahkan masukan nama</string>
-    <string name="sudah_punya_akun">"Sudah punya akun? "</string>
-    <string name="masuk">Masuk</string>
-
-
-    <string name="title_menu_1">Foto sampah</string>
-    <string name="title_menu_2">Deteksi sampah</string>
-    <string name="title_menu_3">Rekomendasi produk daur ulang</string>
-    <string name="title_menu_4">Mulai Daur ulang</string>
-    <string name="desc_menu_1">Siapkan sampah yang ingin di daur ulang seperti boto plastik, kemudian foto sampah tersebut melalui aplikasi</string>
-    <string name="desc_menu_2">Sampah yang di foto akan di deteksi menggunakan machine learning untuk mengidentifikasi sampah</string>
-    <string name="desc_menu_3">Sampah yang telah di scan akan menampilkan data dan rekomendasi produk hasil daur ulang</string>
-    <string name="desc_menu_4">Daftarkan akunmu dan mulailah daur ulang sekarang</string>
-    <string name="learn_now">Mulai Sekarang</string>
+    <string name="title_menu_1" translatable="false">Foto sampah</string>
+    <string name="title_menu_2" translatable="false">Deteksi sampah</string>
+    <string name="title_menu_3" translatable="false">Rekomendasi produk daur ulang</string>
+    <string name="title_menu_4" translatable="false">Mulai Daur ulang</string>
+    <string name="desc_menu_1" translatable="false">Siapkan sampah yang ingin di daur ulang seperti boto plastik, kemudian foto sampah tersebut melalui aplikasi</string>
+    <string name="desc_menu_2" translatable="false">Sampah yang di foto akan di deteksi menggunakan machine learning untuk mengidentifikasi sampah</string>
+    <string name="desc_menu_3" translatable="false">Sampah yang telah di scan akan menampilkan data dan rekomendasi produk hasil daur ulang</string>
+    <string name="desc_menu_4" translatable="false">Daftarkan akunmu dan mulailah daur ulang sekarang</string>
+    <string name="learn_now" translatable="false">Mulai Sekarang</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_notifications">Notifikasi</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_camera">Camera</string>
+    <string name="title_camera">Kamera</string>
     <string name="title_list">List</string>
-    <string name="title_profile">Profile</string>
-    <string name="title">Article Title</string>
+    <string name="title_profile">Profil</string>
+    <string name="title">Artikel</string>
     <string name="published_date">May 22, 2023</string>
-    <string name="save_bookmark">Save</string>
-    <string name="error_occurred">Cannot load data</string>
+    <string name="error_occurred">Tidak Bisa Memuat Data</string>
     <string name="profile_name">Bayu Afriyadi</string>
     <string name="profile_email">bayuafriyadi5@gmail.com</string>
-    <string name="preferences">Preferences</string>
-    <string name="notifications">Notifications</string>
+    <string name="change_language">Ganti Bahasa</string>
+    <string name="notifications">Notifikasi</string>
     <string name="feedback">Feedback</string>
     <string name="home_name">Hi,Ujang maman</string>
-    <string name="artikel_title">Artikel</string>
-    <string name="retry">try again</string>
+    <string name="artikel_title" translatable="false">Artikel</string>
+    <string name="retry">Coba Lagi</string>
+    <string name="login_google" translatable="false">Masuk dengan Google</string>
+    <string name="change_Theme">Ganti Tema</string>
+    <string name="dark_mode">Mode Gelap </string>
+    <string name="sign_out">Keluar</string>
+    <string name="login_subtitle">Daur ulang jadi lebih mudah karena Trash to Treasure</string>
 </resources>

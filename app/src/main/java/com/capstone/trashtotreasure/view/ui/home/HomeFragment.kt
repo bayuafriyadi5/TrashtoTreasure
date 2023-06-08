@@ -2,16 +2,15 @@ package com.capstone.trashtotreasure.view.ui.home
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.paging.ExperimentalPagingApi
-import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.capstone.trashtotreasure.R
 import com.capstone.trashtotreasure.databinding.FragmentHomeBinding
 import com.capstone.trashtotreasure.view.ui.adapter.ArticleAdapter
 import com.capstone.trashtotreasure.view.ui.adapter.LoadingStateAdapter
@@ -49,7 +48,6 @@ class HomeFragment : Fragment() {
         setupUser()
         setupNewsAdapter()
         getArticle()
-
     }
 
     override fun onResume() {
@@ -60,11 +58,6 @@ class HomeFragment : Fragment() {
             binding.loadingShimmer.visibility = View.INVISIBLE
         }
     }
-
-//    override fun onResume() {
-//        super.onResume()
-//        binding.loadingShimmer.visibility = View.VISIBLE
-//    }
 
     override fun onPause() {
         super.onPause()
@@ -99,13 +92,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupNewsAdapter() {
-        newsAdapter = ArticleAdapter { news ->
-            if (news.isBookmarked) {
-                homeViewModel.deleteNews(news)
-            } else {
-                homeViewModel.saveNews(news)
-            }
-        }
+        newsAdapter = ArticleAdapter()
     }
 
     private fun getArticle() {
@@ -113,14 +100,12 @@ class HomeFragment : Fragment() {
             binding.rvArtikel.adapter = newsAdapter.withLoadStateFooter(
                 footer = LoadingStateAdapter {
                     newsAdapter.retry()
-//                    binding.loadingShimmer.visibility = View.GONE
                 }
             )
             newsAdapter.submitData(lifecycle, articleData)
-
-//            binding.loadingShimmer.visibility = View.GONE
         }
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

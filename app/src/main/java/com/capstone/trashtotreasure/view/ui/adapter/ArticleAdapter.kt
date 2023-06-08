@@ -16,7 +16,7 @@ import com.capstone.trashtotreasure.model.data.local.entitiy.NewsEntity
 import com.capstone.trashtotreasure.view.ui.adapter.ArticleAdapter.MyViewHolder
 import java.util.*
 
-class ArticleAdapter(private val onBookmarkClick:  (NewsEntity) -> Unit) : PagingDataAdapter<NewsEntity, MyViewHolder>(DIFF_CALLBACK) {
+class ArticleAdapter : PagingDataAdapter<NewsEntity, MyViewHolder>(DIFF_CALLBACK) {
 
     private var lastPosition = RecyclerView.NO_POSITION
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -29,22 +29,6 @@ class ArticleAdapter(private val onBookmarkClick:  (NewsEntity) -> Unit) : Pagin
         val news = getItem(position)
         if (news != null) {
             holder.bind(news)
-        }
-
-        val ivBookmark = holder.binding.ivBookmark
-        if (news?.isBookmarked == true) {
-            ivBookmark.setImageDrawable(ContextCompat.getDrawable(ivBookmark.context, R.drawable.ic_bookmarked_24))
-        } else {
-            ivBookmark.setImageDrawable(ContextCompat.getDrawable(ivBookmark.context, R.drawable.ic_bookmark_border_24))
-        }
-        ivBookmark.setOnClickListener {
-            if (news != null) {
-                onBookmarkClick(news)
-                // Update the isBookmarked property manually
-                news.isBookmarked = !news.isBookmarked
-                // Notify the adapter of the data change
-                notifyItemChanged(position)
-            }
         }
     }
 

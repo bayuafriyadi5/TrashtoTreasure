@@ -19,13 +19,4 @@ class HomeViewModel @Inject constructor(
     fun getAllArticle(): LiveData<PagingData<NewsEntity>> =
         articleRepository.getArticle()
 
-    fun getBookmarkedNews() = articleRepository.getBookmarkedNews()
-
-    fun saveNews(news: NewsEntity) {
-        articleRepository.setBookmarkedNews(news, true)
-    }
-
-    fun deleteNews(news: NewsEntity) {
-        articleRepository.setBookmarkedNews(news, false)
-    }
 }
