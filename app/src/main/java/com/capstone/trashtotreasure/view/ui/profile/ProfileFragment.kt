@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
+import com.capstone.trashtotreasure.R
 import com.capstone.trashtotreasure.databinding.FragmentProfileBinding
 import com.capstone.trashtotreasure.view.ui.cloth.ClothSnapActivity
 import com.capstone.trashtotreasure.view.ui.feedback.FeedbackActivity
@@ -66,7 +67,7 @@ class ProfileFragment : Fragment() {
         binding.btnSignOut.setOnClickListener {
             AlertDialog.Builder(requireContext()).apply {
                 setTitle("Sign Out")
-                setMessage("Are you sure want to log out?")
+                setMessage(R.string.alert_logout)
                 setPositiveButton("Yes") { _, _ ->
                     signOut()
                 }
