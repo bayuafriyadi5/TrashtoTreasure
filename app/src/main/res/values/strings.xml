@@ -34,4 +34,23 @@
     <string name="dark_mode">Mode Gelap </string>
     <string name="sign_out">Keluar</string>
     <string name="login_subtitle">Daur ulang jadi lebih mudah karena Trash to Treasure</string>
+    <string name="plasctic_waste">Sampah Plastik</string>
+    <string name="pilih_kategori">Pilih Kategori</string>
+    <string name="glass_waste">Sampah Kaca</string>
+    <string name="metal_waste">Sampah Metal</string>
+    <string name="cloth_waste">Sampah Kain</string>
+    <string name="capture_image">Capture Image</string>
+    <string name="gallery">Galeri</string>
+    <string name="camera">Kamera</string>
+    <string name="opening_camera">Membuka Kamera</string>
+    <string name="opening_gallery">Membuka Gallery</string>
+    <string name="import_picture">Memasukan Gambar</string>
+    <string name="permission_not_granted">Permission tidak diberikan</string>
+    <string name="failed_open_camera">Gagal Membuka Kamera</string>
+     <string name="tab_plastic_1">Deskripsi</string>
+    <string name="tab_plastic_2">Rekomendasi</string>
+    <string name="cara_membuat">Cara Membuat</string>
+    <string name="take_a_picture_of_your_trash">Ambil foto dari sampah anda</string>
+    <string name="feedback_hint">Feedback</string>
+    <string name="alert_feedback">Feedback anda telah di kirim</string>
 </resources>

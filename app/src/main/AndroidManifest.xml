@@ -5,6 +5,14 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <uses-feature android:name="android.hardware.camera" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
+
     <application
         android:name=".application.BaseApplication"
         android:allowBackup="true"
@@ -15,6 +23,58 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TrashToTreasure"
         tools:targetApi="31">
+        <activity
+            android:name=".view.ui.feedback.FeedbackActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.ui.cloth.result.ClothDetailRecommendActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.ui.cloth.result.ClothResultActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.ui.cloth.ClothCameraActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.ui.cloth.ClothSnapActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.ui.glass.result.GlassDetailRecommendActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.ui.glass.result.GlassResultActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.ui.glass.GlassCameraActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.ui.glass.GlassSnapActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.ui.metal.result.MetalResultActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.ui.metal.result.MetalDetailRecommendActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.ui.metal.MetalCameraActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.ui.metal.MetalSnapActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.ui.plastic.result.PlasticDetailRecommendActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.ui.plastic.PlasticSnapActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.ui.plastic.result.PlasticResultActivity"
+            android:configChanges="orientation|screenSize"
+            android:exported="false" />
+        <activity
+            android:name=".view.ui.plastic.PlasticCameraActivity"
+            android:exported="false" />
         <activity
             android:name=".view.MainActivity"
             android:exported="false" />

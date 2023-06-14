@@ -14,6 +14,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.capstone.trashtotreasure.databinding.FragmentProfileBinding
+import com.capstone.trashtotreasure.view.ui.cloth.ClothSnapActivity
+import com.capstone.trashtotreasure.view.ui.feedback.FeedbackActivity
 import com.capstone.trashtotreasure.view.ui.login.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -92,6 +94,11 @@ class ProfileFragment : Fragment() {
 
         binding.menuLanguage.setOnClickListener {
             startActivity(Intent(Settings.ACTION_LOCALE_SETTINGS))
+        }
+
+        binding.menuFeedback.setOnClickListener {
+            val intent = Intent(requireContext(), FeedbackActivity::class.java)
+            startActivity(intent)
         }
 
 
