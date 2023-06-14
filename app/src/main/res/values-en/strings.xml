@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Trash to Treasure</string>
+    <string name="splash_logo">Splash Logo</string>
+    <string name="title_menu_1" translatable="false">Capture your trash</string>
+    <string name="title_menu_2" translatable="false">Detect trash</string>
+    <string name="title_menu_3" translatable="false">Recommendation of recycle products</string>
+    <string name="title_menu_4" translatable="false">Start Recycling</string>
+    <string name="desc_menu_1" translatable="false">Prepare the waste you want to recycle, such as plastic bottles, then take a photo of the trash through the application</string>
+    <string name="desc_menu_2" translatable="false">Garbage in the photo will be detected using machine learning to identify trash</string>
+    <string name="desc_menu_3" translatable="false">Trash that has been scanned will display data and recommendations for recycled products</string>
+    <string name="desc_menu_4" translatable="false">Register your account and start recycling now</string>
+    <string name="learn_now" translatable="false">Start Now</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_camera">Camera</string>
+    <string name="title_list">List</string>
+    <string name="title_profile">Profile</string>
+    <string name="title">Article</string>
+    <string name="published_date">May 22, 2023</string>
+    <string name="error_occurred">Cannot load data</string>
+    <string name="profile_name">Bayu Afriyadi</string>
+    <string name="profile_email">bayuafriyadi5@gmail.com</string>
+    <string name="change_language">Change Language</string>
+    <string name="notifications">Notifications</string>
+    <string name="feedback">Feedback</string>
+    <string name="home_name">Hi,Ujang maman</string>
+    <string name="artikel_title" translatable="false">Article</string>
+    <string name="retry">Try Again</string>
+    <string name="login_google" translatable="false">Login with Google</string>
+    <string name="change_Theme">Change Theme</string>
+    <string name="dark_mode">Dark Mode </string>
+    <string name="sign_out">Sign Out</string>
+    <string name="login_subtitle">Recycling is made easier because of Trash to Treasure</string>
+    <string name="plasctic_waste">Plastic Waste</string>
+    <string name="pilih_kategori">Choose Category</string>
+    <string name="glass_waste">Glass Waste</string>
+    <string name="metal_waste">Metal Waste</string>
+    <string name="cloth_waste">Cloth Waste</string>
+    <string name="alert_feedback">Your Feedback has been send</string>
+    <string name="capture_image">Capture Image</string>
+    <string name="gallery">Galeri</string>
+    <string name="camera">Kamera</string>
+    <string name="opening_camera">Opening Camera</string>
+    <string name="opening_gallery">Opening Gallery</string>
+    <string name="import_picture">Inserting Image</string>
+    <string name="permission_not_granted">Permission not granted</string>
+    <string name="failed_open_camera">Failed to load Camera</string>
+    <string name="tab_plastic_1">Description</string>
+    <string name="tab_plastic_2">Rekomendasi</string>
+    <string name="cara_membuat">How to make</string>
+    <string name="take_a_picture_of_your_trash">Take a picture of your trash</string>
+    <string name="feedback_hint">Feedback</string>
+    <string name="alert_logout">Are you sure want to log out?</string>
+    <string name="send_feedback">Send Feedback</string>
+</resources>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "106699822964",
+    "firebase_url": "https://artful-guru-386801-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "artful-guru-386801",
+    "storage_bucket": "artful-guru-386801.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:106699822964:android:0fdd1ac837450273dc7e21",
+        "android_client_info": {
+          "package_name": "com.capstone.trashtotreasure"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "106699822964-c8s4rlehgslsf2gae2kf6oq8krednvj8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.capstone.trashtotreasure",
+            "certificate_hash": "aa06836dbd4fd67778f073ae1b4b5f55ec28293f"
+          }
+        },
+        {
+          "client_id": "106699822964-4rs7tlqvco18482ctf59lk36ve0ulr9v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARo-TRUX-CLI2E8A8VISGmePhzSofiZQ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "106699822964-4rs7tlqvco18482ctf59lk36ve0ulr9v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
