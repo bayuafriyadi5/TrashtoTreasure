@@ -55,4 +55,5 @@
     <string name="alert_feedback">Feedback anda telah di kirim</string>
     <string name="alert_logout">Anda yakin ingin keluar?</string>
     <string name="send_feedback">Kirim Feedback</string>
+    <string name="read_more">Baca Selengkapnya</string>
 </resources>

@@ -91,7 +91,7 @@ class PlasticDetailRecommendActivity : AppCompatActivity() {
 
             binding.ytPlayer.addYouTubePlayerListener(object : AbstractYouTubePlayerListener(){
                 override fun onReady(youTubePlayer: YouTubePlayer) {
-                    youTubePlayer.loadVideo("jVwm4", 0f)
+                    youTubePlayer.loadVideo("5eA0z_jVwm4", 0f)
                 }
             })
         }else if(result == "Pot Tanaman"){

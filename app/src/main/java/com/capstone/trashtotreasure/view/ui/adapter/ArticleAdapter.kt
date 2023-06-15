@@ -65,10 +65,11 @@ class ArticleAdapter : PagingDataAdapter<NewsEntity, MyViewHolder>(DIFF_CALLBACK
                 .into(binding.imgPoster)
 
             itemView.setOnClickListener {
-                val intent = Intent(itemView.context,DetailActivity::class.java)
+                val intent = Intent(itemView.context, DetailActivity::class.java)
                 intent.putExtra(DetailActivity.EXTRA_IMAGE, news?.imageUrl)
                 intent.putExtra(DetailActivity.EXTRA_TITLE, news?.title)
                 intent.putExtra(DetailActivity.EXTRA_DESC, news?.description)
+                intent.putExtra(DetailActivity.EXTRA_URL, news?.url)
                 itemView.context.startActivity(intent)
             }
         }
