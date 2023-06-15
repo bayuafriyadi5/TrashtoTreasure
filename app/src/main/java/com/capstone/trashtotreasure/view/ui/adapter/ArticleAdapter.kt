@@ -14,6 +14,8 @@ import com.capstone.trashtotreasure.R
 import com.capstone.trashtotreasure.databinding.ItemArticleBinding
 import com.capstone.trashtotreasure.model.data.local.entitiy.NewsEntity
 import com.capstone.trashtotreasure.view.ui.adapter.ArticleAdapter.MyViewHolder
+import com.capstone.trashtotreasure.view.ui.cloth.result.ClothDetailRecommendActivity
+import com.capstone.trashtotreasure.view.ui.home.DetailActivity
 import java.util.*
 
 class ArticleAdapter : PagingDataAdapter<NewsEntity, MyViewHolder>(DIFF_CALLBACK) {
@@ -55,23 +57,18 @@ class ArticleAdapter : PagingDataAdapter<NewsEntity, MyViewHolder>(DIFF_CALLBACK
     ){
         @SuppressLint("SimpleDateFormat")
         fun bind(news: NewsEntity?) {
-//            val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
-//            dateFormat.timeZone = TimeZone.getTimeZone("ID")
-//            val time = dateFormat.parse(news.publishedAt)?.time
-//            val prettyTime = PrettyTime(Locale.getDefault())
-//            val date = prettyTime.format(time?.let { Date(it) })
 
             binding.tvItemTitle.text = news?.title
-//            binding.tvItemPublishedDate.text = date
-
 
             Glide.with(itemView.context)
                 .load(news?.imageUrl)
                 .into(binding.imgPoster)
 
             itemView.setOnClickListener {
-                val intent = Intent(Intent.ACTION_VIEW)
-                intent.data = Uri.parse(news?.url)
+                val intent = Intent(itemView.context,DetailActivity::class.java)
+                intent.putExtra(DetailActivity.EXTRA_IMAGE, news?.imageUrl)
+                intent.putExtra(DetailActivity.EXTRA_TITLE, news?.title)
+                intent.putExtra(DetailActivity.EXTRA_DESC, news?.description)
                 itemView.context.startActivity(intent)
             }
         }

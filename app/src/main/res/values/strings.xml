@@ -47,7 +47,7 @@
     <string name="import_picture">Memasukan Gambar</string>
     <string name="permission_not_granted">Permission tidak diberikan</string>
     <string name="failed_open_camera">Gagal Membuka Kamera</string>
-     <string name="tab_plastic_1">Deskripsi</string>
+    <string name="tab_plastic_1">Deskripsi</string>
     <string name="tab_plastic_2">Rekomendasi</string>
     <string name="cara_membuat">Cara Membuat</string>
     <string name="take_a_picture_of_your_trash">Ambil foto dari sampah anda</string>

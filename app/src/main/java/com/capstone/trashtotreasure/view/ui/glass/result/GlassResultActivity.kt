@@ -72,9 +72,9 @@ class GlassResultActivity : AppCompatActivity() {
 
 
         var result = BitmapFactory.decodeFile((file as File).path)
-//        if (!isGallery) {
-//            result = rotateBitmap(result, isBack)
-//        }
+        if (!isGallery) {
+            result = rotateBitmap(result, isBack)
+        }
         appExecutor.diskIO.execute {
             file = reduceFileImage(file as File)
             compressingDone.postValue(true)

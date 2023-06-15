@@ -24,6 +24,9 @@
         android:theme="@style/Theme.TrashToTreasure"
         tools:targetApi="31">
         <activity
+            android:name=".view.ui.home.DetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.ui.feedback.FeedbackActivity"
             android:exported="false" />
         <activity
