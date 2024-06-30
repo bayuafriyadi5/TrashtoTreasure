@@ -101,7 +101,6 @@ class PlasticDescFragment : Fragment() {
                 }
                 is Result.Error -> {
                     binding.loading.visibility = GONE
-
                     binding.tvTitle.visibility = GONE
                     binding.tvSubtitle.visibility = GONE
                     binding.tvCategoryTitle.visibility = GONE
@@ -112,13 +111,11 @@ class PlasticDescFragment : Fragment() {
                 }
                 is Result.Success -> {
                     binding.loading.visibility = GONE
-
                     binding.tvTitle.visibility = VISIBLE
                     binding.tvSubtitle.visibility = VISIBLE
                     binding.tvCategoryTitle.visibility = VISIBLE
                     binding.tvCategorySubtitle.visibility = VISIBLE
                     binding.tvDesc.visibility = VISIBLE
-
                     binding.tvTitle.text = result.data.answer
                     binding.tvDesc.text = Html.fromHtml(result.data.description)
 

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.capstone.trashtotreasure">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -23,6 +22,45 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TrashToTreasure"
         tools:targetApi="31">
+        <activity
+            android:name=".view.ui.profile.UpdateSellerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.ui.marketplace.RestokActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.ui.profile.DetailPesananMasukActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.ui.profile.PesananMasukActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.ui.marketplace.DetailTransactionPembeliActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.ui.marketplace.BuyerTransactionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.ui.marketplace.PaymentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.ui.marketplace.TransactionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.ui.marketplace.MyProductActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.ui.marketplace.SellProductActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.ui.profile.RegisSellerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.ui.profile.EditProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.ui.register.RegisterActivity"
+            android:exported="false" />
         <activity
             android:name=".view.ui.home.DetailActivity"
             android:exported="false" />

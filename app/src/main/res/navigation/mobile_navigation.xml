@@ -18,6 +18,11 @@
         tools:layout="@layout/fragment_scan" />
 
     <fragment
+        android:id="@+id/navigation_market"
+        android:name="com.capstone.trashtotreasure.view.ui.marketplace.MarketplaceFragment"
+        android:label="@string/marketplace"
+        tools:layout="@layout/fragment_marketplace" />
+    <fragment
         android:id="@+id/navigation_list"
         android:name="com.capstone.trashtotreasure.view.ui.list.ListFragment"
         android:label="@string/title_dashboard"

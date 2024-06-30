@@ -8,9 +8,15 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat.startActivity
+import androidx.lifecycle.lifecycleScope
+import androidx.paging.ExperimentalPagingApi
 import com.capstone.trashtotreasure.R
 import com.capstone.trashtotreasure.databinding.ActivityLoginBinding
 import com.capstone.trashtotreasure.view.MainActivity
+import com.capstone.trashtotreasure.view.ui.register.RegisterActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -20,37 +26,22 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
+@AndroidEntryPoint
+@ExperimentalPagingApi
 class LoginActivity : AppCompatActivity() {
-
-    private lateinit var googleSignInClient: GoogleSignInClient
-    private lateinit var auth: FirebaseAuth
 
     private val binding: ActivityLoginBinding by lazy {
         ActivityLoginBinding.inflate(layoutInflater)
     }
 
+    private val loginViewModel: LoginViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         supportActionBar?.hide()
-
-        // Configure Google Sign In
-        val gso = GoogleSignInOptions
-            .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id))
-            .requestEmail()
-            .build()
-        googleSignInClient = GoogleSignIn.getClient(this, gso)
-        // Initialize Firebase Auth
-        auth = Firebase.auth
-
-
-//        binding.loginButton.setOnClickListener {
-//            val intent = Intent(this, MainActivity::class.java)
-//            startActivity(intent)
-//        }
-
+        binding.loading.visibility = View.INVISIBLE
         binding.signInButton.setOnClickListener {
             binding.loading.visibility = View.VISIBLE
             signIn()
@@ -58,58 +49,63 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun signIn() {
-        auth.signOut()
-        googleSignInClient.signOut().addOnCompleteListener(this) {
-            val signInIntent = googleSignInClient.signInIntent
-            resultLauncher.launch(signInIntent)
-        }
-    }
-    private var resultLauncher = registerForActivityResult(
-        ActivityResultContracts.StartActivityForResult()
-    ) { result ->
-        if (result.resultCode == Activity.RESULT_OK) {
-            val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
-            try {
-                // Google Sign In was successful, authenticate with Firebase
-                val account = task.getResult(ApiException::class.java)!!
-                Log.d(TAG, "firebaseAuthWithGoogle:" + account.id)
-                firebaseAuthWithGoogle(account.idToken!!)
-            } catch (e: ApiException) {
-                // Google Sign In failed, update UI appropriately
-                Log.w(TAG, "Google sign in failed", e)
+        val email = binding.emailEditTextLogin.text.toString()
+        val password = binding.passwordEditTextLogin.text.toString()
+        val EMAILFORMAT = Regex("[a-zA-Z0-9._]+@[a-z]+\\.+[a-z]+")
+
+        when {
+            email.isEmpty() -> {
+                binding.textInputEmailLogin.error = "Please insert your email"
+                binding.loading.visibility = View.INVISIBLE
             }
-        }
-    }
-    private fun firebaseAuthWithGoogle(idToken: String) {
-        val credential = GoogleAuthProvider.getCredential(idToken, null)
-        auth.signInWithCredential(credential)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-                    Log.d(TAG, "signInWithCredential:success")
-                    val user = auth.currentUser
-                    updateUI(user)
-                } else {
-                    // If sign in fails, display a message to the user.
-                    Log.w(TAG, "signInWithCredential:failure", task.exception)
-                    updateUI(null)
+            password.isEmpty() -> {
+                binding.textInputPasswordLogin.error = "Please insert your password"
+                binding.loading.visibility = View.INVISIBLE
+            }
+            password.length < 8 -> {
+                Toast.makeText(this, "Password must be 8 or more characters", Toast.LENGTH_SHORT).show()
+                binding.loading.visibility = View.INVISIBLE
+            }
+            !email.matches(EMAILFORMAT) -> {
+                binding.textInputEmailLogin.error = "Incorrect email format"
+                binding.loading.visibility = View.INVISIBLE
+            }
+            else -> {
+                lifecycleScope.launch {
+                    loginViewModel.login(email, password).observe(this@LoginActivity) { result ->
+                        result.onSuccess { response ->
+                            response.payload?.token?.let { token ->
+                                loginViewModel.saveToken(token)
+                                binding.loading.visibility = View.INVISIBLE
+                                navigateToMainActivity()
+                                Toast.makeText(this@LoginActivity, "Login Success", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                        result.onFailure {
+                            binding.loading.visibility = View.INVISIBLE
+                            val error = it.message
+                            Toast.makeText(this@LoginActivity, error, Toast.LENGTH_SHORT).show()
+                        }
+                    }
                 }
             }
+        }
     }
-    private fun updateUI(currentUser: FirebaseUser?) {
-        if (currentUser != null){
-            startActivity(Intent(this@LoginActivity, MainActivity::class.java))
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+
+    private fun navigateToMainActivity() {
+
+        Intent(this, MainActivity::class.java).also {
+            it.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(it)
             finish()
         }
     }
 
-    companion object {
-        private const val TAG = "LoginActivity"
+
+    fun gotoRegis(view: View) {
+        val intent = Intent(this, RegisterActivity::class.java)
+        startActivity(intent)
     }
 
-//    fun goToRegister(view: View) {
-//        val intent = Intent(this, RegisterActivity::class.java)
-//        startActivity(intent)
-//    }
+
 }

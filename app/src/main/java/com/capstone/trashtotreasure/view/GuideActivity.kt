@@ -3,6 +3,7 @@ package com.capstone.trashtotreasure.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.paging.ExperimentalPagingApi
 import com.capstone.trashtotreasure.databinding.ActivityGuideBinding
 import com.capstone.trashtotreasure.view.ui.login.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -10,6 +11,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
+@ExperimentalPagingApi
 class GuideActivity : AppCompatActivity() {
 
     private val binding: ActivityGuideBinding by lazy {

@@ -12,6 +12,8 @@ import com.capstone.trashtotreasure.R
 import java.io.*
 import java.text.SimpleDateFormat
 import java.util.*
+import javax.crypto.Cipher
+import javax.crypto.spec.SecretKeySpec
 
 private const val FILENAME_FORMAT = "dd-MM-yyyy"
 
@@ -95,6 +97,7 @@ fun reduceFileImage(file: File): File {
     bitmap.compress(Bitmap.CompressFormat.JPEG, compressQuality, FileOutputStream(file))
     return file
 }
+
 
 
 

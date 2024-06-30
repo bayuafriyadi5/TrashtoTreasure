@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginTop="56dp"
     tools:context=".view.ui.profile.ProfileFragment">
 
 
@@ -18,6 +19,7 @@
             android:layout_height="160dp"
             android:scaleType="centerCrop"
             android:src="@drawable/profile_banner"
+            android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -28,6 +30,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginStart="32dp"
+            android:visibility="invisible"
             android:src="@drawable/ic_account_circle_black_24dp"
             app:layout_constraintBottom_toBottomOf="@+id/bannerProfile"
             app:layout_constraintStart_toStartOf="@+id/bannerProfile"
@@ -41,6 +44,7 @@
             android:text="@string/profile_name"
             android:textColor="@color/white"
             android:textSize="20sp"
+            android:visibility="invisible"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/ivProfile"
             app:layout_constraintTop_toTopOf="@+id/ivProfile" />
@@ -51,6 +55,7 @@
             android:layout_height="wrap_content"
             android:text="@string/profile_email"
             android:textColor="@color/white"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="@+id/ivProfile"
             app:layout_constraintStart_toStartOf="@+id/tvProfileName"
             app:layout_constraintTop_toBottomOf="@+id/tvProfileName" />
@@ -156,6 +161,7 @@
                 android:id="@+id/menuFeedback"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:layout_marginBottom="2dp"
                 android:background="#dedede"
                 android:clickable="true"
                 app:cardElevation="10dp">
@@ -189,6 +195,122 @@
 
             </androidx.cardview.widget.CardView>
 
+            <androidx.cardview.widget.CardView
+                android:id="@+id/menuEditProfile"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginBottom="2dp"
+                android:background="#dedede"
+                android:clickable="true"
+                app:cardElevation="10dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/editprofileIcon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:src="@drawable/ic_account_circle_black_24dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.5" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:text="@string/edit_profile"
+                        app:layout_constraintBottom_toBottomOf="@+id/editprofileIcon"
+                        app:layout_constraintStart_toEndOf="@+id/editprofileIcon"
+                        app:layout_constraintTop_toTopOf="@+id/editprofileIcon" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/menuDaftarPenjual"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="#dedede"
+                android:layout_marginBottom="2dp"
+                android:clickable="true"
+                app:cardElevation="10dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/daftarPenjualIcon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:src="@drawable/black_shopping_basket_24"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.5" />
+
+
+                    <TextView
+                        android:id="@+id/tvRegisPenjual"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:text="@string/register_as_seller"
+                        app:layout_constraintBottom_toBottomOf="@+id/daftarPenjualIcon"
+                        app:layout_constraintStart_toEndOf="@+id/daftarPenjualIcon"
+                        app:layout_constraintTop_toTopOf="@+id/daftarPenjualIcon" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/menuPesananMasuk"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="#dedede"
+                android:clickable="true"
+                app:cardElevation="10dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/pesananMasuklIcon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:src="@drawable/baseline_notifications_active_24"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.5" />
+
+
+                    <TextView
+                        android:id="@+id/tvPesananMasuk"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:text="@string/my_orders"
+                        app:layout_constraintBottom_toBottomOf="@+id/pesananMasuklIcon"
+                        app:layout_constraintStart_toEndOf="@+id/pesananMasuklIcon"
+                        app:layout_constraintTop_toTopOf="@+id/pesananMasuklIcon" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
         </LinearLayout>
 
         <com.google.android.material.button.MaterialButton
@@ -205,6 +327,26 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/loadingShimmerProfile"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:elevation="10dp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <include layout="@layout/item_shimmer_profile" />
+
+            </LinearLayout>
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

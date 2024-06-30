@@ -8,6 +8,22 @@ import java.util.concurrent.TimeUnit
 
 object ApiConfig {
 
+    fun getApiServiceMain(): ApiServiceMain {
+        val loggingInterceptor = HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BODY
+        }
+        val client: OkHttpClient = OkHttpClient.Builder()
+            .addInterceptor(loggingInterceptor)
+            .build()
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://trashto-treasure-api.vercel.app/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(client)
+            .build()
+        return retrofit.create(ApiServiceMain::class.java)
+    }
+
+
     fun getApiService(): ApiService {
         val loggingInterceptor = HttpLoggingInterceptor()
             .setLevel(HttpLoggingInterceptor.Level.BODY)
@@ -36,7 +52,6 @@ object ApiConfig {
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()
-
         return retrofit.create(ApiServiceML::class.java)
     }
 }

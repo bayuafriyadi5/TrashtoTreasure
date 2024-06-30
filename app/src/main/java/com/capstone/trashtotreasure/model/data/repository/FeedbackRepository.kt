@@ -26,17 +26,17 @@ class FeedbackRepository  @Inject constructor(
             emit(Result.success(response))
         } catch (e: Exception) {
             e.printStackTrace()
-            val errorMessage = when (e) {
-                is HttpException -> {
-                    when (e.code()) {
-                        400 -> "Email already taken"
-                        else -> "Register failed, please try again later."
-                    }
-                }
-                is SocketTimeoutException -> "Connection timed out, please try again later."
-                else -> "Register failed, please try again later."
-            }
-            emit(Result.failure(Throwable(errorMessage, e)))
+//            val errorMessage = when (e) {
+//                is HttpException -> {
+//                    when (e.code()) {
+//                        400 -> "Email already taken"
+//                        else -> "Register failed, please try again later."
+//                    }
+//                }
+//                is SocketTimeoutException -> "Connection timed out, please try again later."
+//                else -> "Register failed, please try again later."
+//            }
+            emit(Result.failure(Throwable(e)))
         }
     }
 }

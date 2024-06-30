@@ -1,5 +1,6 @@
 package com.capstone.trashtotreasure.model.data.remote.response
 
+
 import com.google.gson.annotations.SerializedName
 
 data class NewsResponse(

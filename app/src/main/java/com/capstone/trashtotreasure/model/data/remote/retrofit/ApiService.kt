@@ -2,7 +2,8 @@ package com.capstone.trashtotreasure.model.data.remote.retrofit
 
 import com.capstone.trashtotreasure.model.data.remote.response.AddFeedBackResponse
 import com.capstone.trashtotreasure.model.data.remote.response.NewsResponse
-import retrofit2.Call
+import com.capstone.trashtotreasure.model.data.remote.response.login.LoginResponse
+import com.capstone.trashtotreasure.model.data.remote.response.user.UserResponse
 import retrofit2.http.*
 
 interface ApiService {
